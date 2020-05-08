@@ -20,8 +20,12 @@ export class AddCentreComponent implements OnInit {
   createTest(): void {
 
     this.httpClientService.createTest(this.user)
-        .subscribe( data => {
-          alert(" added successfully.");
+        .subscribe(data => {
+          if(data){
+          alert("added successfully.");
+          }else{
+            alert("Test Already exist!!");
+          }
         });
 
   };

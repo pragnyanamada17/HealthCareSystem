@@ -1,8 +1,22 @@
+<head>  
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  </head>
+  <br>
+  <br>
+<div class="col-md-6 offset-2">
+  
+<nav class="navbar navbar-dark bg-dark"> 
+  <a class="navbar-brand" href="#"> 
+    <div class="col-md-4 offset-2">
+    Add Test
+  </div>
+</a> 
+</nav> 
+<br>
+<br>
 
-<div class="col-md-6">
-  <h2 class="text-center">Add Test</h2>
   <form>
-    
 <div>
   <label for="centreName">CentreName:</label><br>
  <!-- dropdown -->
@@ -12,12 +26,18 @@
     </option>`
 </select>
 </div>
-<br><br>
-    <div class="form-group">
+<br>
+    <div class="form-group row">
+    <div class="col-xs-8">
+
       <label for="centreName">TestName:</label>
-      <input type="name" [(ngModel)]="user.testName" placeholder="TestName" name="centreName" class="form-control" id="centreName">
+      <input type="text"  [(ngModel)]="user.testName" placeholder="testName" class="col-md-4"
+      name="testName" class="form-control" id="testName" #testName="ngModel" required name="centreName" class="form-control" id="centreName">
+      <div *ngIf="testName.errors  && testName.dirty && testName.touched" class="alert alert-danger">
+      <div *ngIf="testName.errors.required">Testname required</div>
+      </div>
     </div>
-  
+      </div>
     <button class="btn btn-success" (click)="createTest()"> Submit </button>
   </form>
   </div>
