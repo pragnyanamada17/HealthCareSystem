@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
 public class HealthCareSysteDelTestApplicationTests {
+	
 
 	@Test
 	public void testDeleteDiagnosticCentreListSuccess() throws URISyntaxException {
