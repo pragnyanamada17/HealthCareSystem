@@ -10,6 +10,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @SpringBootApplication
 public class CloudConfigApplication {
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudConfigApplication.class, args);
