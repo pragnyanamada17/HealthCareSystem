@@ -18,6 +18,7 @@ import com.cap.anurag.entities.Tests;
 @SpringBootTest
 public class HealthCareSystemApplicationTests {
 	
+	
 	@Test
 	public void testGetTestListSuccess() throws URISyntaxException {
 		RestTemplate restTemplate = new RestTemplate();
