@@ -20,6 +20,7 @@
 		<spring-cloud.version>Edgware.SR2</spring-cloud.version>
 
 	</properties>
+	
 
 	<dependencies>
 		<dependency>
