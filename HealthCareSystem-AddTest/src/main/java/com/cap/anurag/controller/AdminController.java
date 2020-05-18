@@ -31,20 +31,22 @@ public class AdminController {
 	AdminService service;
 	private Random rand = new Random();
 
-	@PostMapping("/create")
 	public ResponseEntity<Boolean> create(@RequestBody Tests test) {
 		System.out.println(test);
+		if(test == null) {
+			throw new RuntimeException("TestName should not be null");
+		}
 		test.setTestId(Integer.toString(rand.nextInt(1000)));
 
 		Tests test1 = null;
 
-		DiagnosticCentre a = service.findByCentreName(test.getCentre().getCentreName());
-		if (a != null) {
-			Optional<Tests> testEntity = service.findBycentreNameAndTestName(a.getCentreName(), test.getTestName());
+		DiagnosticCentre center = service.findByCentreName(test.getCentre().getCentreName());
+		if (center != null) {
+			Optional<Tests> testEntity = service.findBycentreNameAndTestName(center.getCentreName(), test.getTestName());
 			if (testEntity.isPresent()) {
 				throw new RecordFoundException("TestName found");
 			}
-			test1 = new Tests(test.getTestName(), a);
+			test1 = new Tests(test.getTestName(), center);
 		} else {
 			DiagnosticCentre centre = new DiagnosticCentre(test.getCentre().getCentreName());
 			service.save(centre);
@@ -56,7 +58,6 @@ public class AdminController {
 		return new ResponseEntity<>(true, HttpStatus.OK);
 
 	}
-
 	@GetMapping("/findCentre")
 	public ResponseEntity<List<DiagnosticCentre>> getCentres() {
 		List<DiagnosticCentre> list = service.getCentres();
